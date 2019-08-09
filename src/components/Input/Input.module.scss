@@ -1,0 +1,39 @@
+.label{
+    position: relative;
+}
+.input,
+.textarea{
+    margin-bottom: 40px;
+    border: none;
+    border-bottom: 1px solid #0EC2A7;
+    width: 100%;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: "Montserrat", sans-serif;
+    &:focus{
+        outline: none;
+        & + .placeholder{
+            top: -22px;
+            font-size: 13px;
+        }
+    }
+}
+
+.input:not(:placeholder-shown) + .placeholder,
+.textarea:not(:placeholder-shown) + .placeholder {
+  top: -22px;
+  font-size: 13px;
+}
+
+.textarea{
+    resize: none;
+    min-height: 100px;
+}
+
+.placeholder{
+    position: absolute;
+    top: 2px;
+    left:0;
+    color: #828282;
+    transition: .2s all ease;
+}

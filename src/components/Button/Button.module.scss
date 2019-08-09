@@ -1,0 +1,26 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+}
+
+.button{
+    color: #09806E;
+    border: 2px solid #09806E;
+    font-size: 14px;
+    text-align: center;
+    padding: 7px 15px;
+    text-decoration: none;
+    max-width: 140px;
+    background: none;
+    box-shadow: 0 0 1px 0px rgba(0, 0, 0, .2);
+    display: inline-block;
+}
+
+.buttonOposite {
+    @extend .button;
+    color: #ffffff;
+    background: #09806E;
+    margin: 40px 40px 20px auto;
+
+}
+
