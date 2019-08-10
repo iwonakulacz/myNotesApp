@@ -1,12 +1,18 @@
-.wrapper{
-    list-style: none;
-    padding-left: 0;
-    margin: 10px 0;
+.wrapper {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
 }
-.list{
-    display: flex;
-    flex-direction: column;
-   list-style: none;
-   padding: 0;
-   width: 100%;
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+@media (min-width: 991px){
+    .list{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
