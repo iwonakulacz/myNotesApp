@@ -1,7 +1,13 @@
 import React from 'react';
+import List from '../../components/List/List';
+import AppContext from '../../context';
 
 const ArticlesView = () => (
-    <h1>Hello articles view</h1>
+    <AppContext.Consumer>
+        {(context) => (
+            <List items={context.article} />
+        )}
+    </AppContext.Consumer>
 )
 
 export default ArticlesView;

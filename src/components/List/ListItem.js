@@ -7,7 +7,7 @@ const ListItem = ({...props}) => (
     <li className={styles.item}>
       <Title>{props.title}</Title>
       <p className={styles.description}>{props.description}</p>
-      <Button href={props.link}>read it</Button>
+      {props.link.length > 0 && <Button href={props.link}>read it</Button>}
     </li>
 )
 

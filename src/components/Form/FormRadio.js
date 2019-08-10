@@ -1,9 +1,14 @@
 import React from "react";
-import styles from './FormRadio.module.scss';
+import styles from "./FormRadio.module.scss";
 
-const Radio = ({name, children}) => (
+const Radio = ({ name, checked, onRadioChangeFn, children}) => (
   <label className={styles.radio}>
-    <input type="radio" name={name} />
+    <input
+      type="radio"
+      name={name}
+      onChange={onRadioChangeFn}
+      checked={checked}
+    />
     <div className={styles.radioButton} />
     {children}
   </label>
