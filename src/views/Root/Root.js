@@ -6,30 +6,20 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import AppContext from "../../context";
 
-const initialList = [
-  {
-    title: "Pierwszy tytul",
-    link: "https://google.pl",
-    description: "Lorem ipsum dolor em it"
-  },
-  {
-    title: "Drugi tytul",
-    link: "https://google.pl/j",
-    description: "Lorem ipsum dolor"
-  },
-  {
-    title: "Trzeci tytul",
-    link: "https://google.pl/k",
-    description: "Lorem ipsum dolor em it orem ipsum dolor em it"
-  }
-];
+const initNotes =
+  localStorage.getItem("note") !== null
+    ? JSON.parse(localStorage.getItem("note"))
+    : "";
+const initArticles =
+  localStorage.getItem("article") !== null
+    ? JSON.parse(localStorage.getItem("article"))
+    : "";
 
 class Root extends React.Component {
   state = {
-    items: [...initialList],
     isModalOpen: false,
-    note: [],
-    article: []
+    note: [...initNotes],
+    article: [...initArticles]
   };
 
   openModal = () => {
@@ -46,11 +36,18 @@ class Root extends React.Component {
 
   addItem = (e, newItem) => {
     e.preventDefault();
-    this.setState(prevState => ({
-      [newItem.type]: [...prevState[newItem.type], newItem]
-    }));
-
+    this.setState(
+      prevState => ({
+        [newItem.type]: [...prevState[newItem.type], newItem]
+      }),
+      this.saveData
+    );
     this.closeModal();
+  };
+
+  saveData = () => {
+    localStorage.setItem("note", JSON.stringify(this.state.note));
+    localStorage.setItem("article", JSON.stringify(this.state.article));
   };
 
   render() {
@@ -64,7 +61,7 @@ class Root extends React.Component {
       <>
         <AppContext.Provider value={ContextElement}>
           <BrowserRouter>
-            <Nav openModalFn={this.openModal}/>
+            <Nav openModalFn={this.openModal} />
             {isModalOpen && <Modal closeModalFn={this.closeModal} />}
             <Switch>
               <Route exact path="/" component={NotesView} />
