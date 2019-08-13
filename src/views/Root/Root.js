@@ -45,6 +45,18 @@ class Root extends React.Component {
     this.closeModal();
   };
 
+  removeItem = itemToDelete => {
+    const stateUpdate = this.state[itemToDelete.type].filter(item => {
+      return item.title !== itemToDelete.title;
+    });
+    this.setState(
+      {
+        [itemToDelete.type]: stateUpdate
+      },
+      this.saveData
+    );
+  };
+
   saveData = () => {
     localStorage.setItem("note", JSON.stringify(this.state.note));
     localStorage.setItem("article", JSON.stringify(this.state.article));
@@ -53,7 +65,8 @@ class Root extends React.Component {
   render() {
     const ContextElement = {
       ...this.state,
-      addItem: this.addItem
+      addItem: this.addItem,
+      removeItem: this.removeItem
     };
     const { isModalOpen } = this.state;
 

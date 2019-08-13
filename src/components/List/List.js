@@ -6,6 +6,7 @@ const List = ({ items }) => (
   <ul className={styles.list}>
     {items.map(item => (
       <ListItem
+        type={item.type}
         title={item.title}
         link={item.link}
         description={item.description}
