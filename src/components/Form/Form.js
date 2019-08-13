@@ -37,7 +37,7 @@ class Form extends React.Component {
         {context => (
           <div className={styles.wrapper}>
             <Title>add new item</Title>
-            <form className={styles.form} onSubmit={(e) => context.addItem(e, this.state)}>
+            <form className={styles.form} onSubmit={(e) => context.addItem(e, this.state)}  autoComplete="off">
               <div className={styles.radioWrapper}>
                 <Radio
                   onRadioChangeFn={this.handleRadioChange}
@@ -75,6 +75,7 @@ class Form extends React.Component {
                 value={this.state.description}
                 name="description"
                 textarea
+                tag="textarea"
               >
                 Description
               </Input>

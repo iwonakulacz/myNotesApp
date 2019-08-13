@@ -15,9 +15,25 @@
     animation: appear .5s ease;
     width: 100%;
     max-width: 300px;
+    &:hover .removeButton{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .description{
     font-weight: 300;
     margin: 10px 0;
+}
+.removeButton{
+    border: none;
+    background: none;
+    font-size: 22px;
+    color: #09806E;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .2s ease;
 }
